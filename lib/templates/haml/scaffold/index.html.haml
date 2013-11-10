@@ -1,0 +1,21 @@
+%h1
+  Listing <%= plural_table_name %>
+  = link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, class: 'btn btn-primary'
+%hr
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+<% for attribute in attributes -%>
+      %th <%= attribute.human_name %>
+<% end -%>
+      %th
+  %tbody
+    - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+      %tr
+<% for attribute in attributes -%>
+        %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+        %td.text-right
+          = link_to 'Show', <%= singular_table_name %>, class: 'btn btn-sm btn-info'
+          = link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-sm btn-warning'
+          = link_to 'Delete', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
