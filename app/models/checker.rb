@@ -2,7 +2,7 @@ class Checker
   attr_reader :corrected, :original
 
   CHECKS = [:space, :z, :s, :h, :k]
-  SPACE_REGEX = / +/
+  SPACE_REGEX = /  +/
   Z_REGEX = /(?<=\s)z(?=\s[cčfhkpsšt])/i
   S_REGEX = /(?<=\s)s(?=\s[^cčfhkpsšt])/i
   K_REGEX = /(?<=\s)k(?=\s[kg])/i
