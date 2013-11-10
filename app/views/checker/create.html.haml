@@ -1,0 +1,40 @@
+%h1 Poročilo
+%h2 Napake
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th
+        Kategorija
+      %th
+        Število napak
+      %th
+        Odstotkovno
+  %tbody
+    %tr
+      %td Dvojni presledki
+      %td= @checker.space_count
+      = percentage_td @checker.space_percent
+    %tr
+      %td Nepravilni “s”
+      %td= @checker.s_count
+      = percentage_td @checker.s_percent
+    %tr
+      %td Nepravilni “z”
+      %td= @checker.z_count
+      = percentage_td @checker.z_percent
+    %tr
+      %td Nepravilni “h”
+      %td= @checker.h_count
+      = percentage_td @checker.h_percent
+    %tr
+      %td Nepravilni “k”
+      %td= @checker.k_count
+      = percentage_td @checker.k_percent
+  %tfoot
+    %tr
+      %td Skupaj napak
+      %td= @checker.total_count
+      = percentage_td @checker.total_percent
+
+%h2 Popravljen tekst
+%p= simple_format @checker.corrected
