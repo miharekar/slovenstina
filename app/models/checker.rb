@@ -7,7 +7,7 @@ class Checker
   S_REGEX = /(?<=\s)s(?=\s[^cčfhkpsšt])/i
   K_REGEX = /(?<=\s)k(?=\s[kg])/i
   H_REGEX = /(?<=\s)h(?=\s[^kg])/i
-  CAPITALS_REGEX = /(?<=[.?!] )([a-zčšž])/
+  CAPITALS_REGEX = /(?<=[.?!] )([a-zčšž])|^([a-zčšž])/
 
   def initialize text
     @original = text.strip

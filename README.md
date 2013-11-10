@@ -6,4 +6,4 @@ Zaenkrat preverja:
 - dvojne (trojne, četverne,…) presledke
 - s/z predpone
 - h/k predpone
-- male začetnice za ločili
+- male začetnice za ločili in na začetku odstavka
