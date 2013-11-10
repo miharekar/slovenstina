@@ -30,6 +30,10 @@
       %td Nepravilni “k”
       %td= @checker.k_count
       = percentage_td @checker.k_percent
+    %tr
+      %td Male začetnice za ločili
+      %td= @checker.capitals_count
+      = percentage_td @checker.capitals_percent
   %tfoot
     %tr
       %td Skupaj napak

@@ -36,10 +36,17 @@ describe Checker do
     expect(checker.h_percent.round(2)).to eq 5.88
   end
 
-  it 'fixes everything at once' do
-    checker = Checker.new('This is a  double  space  test. S konjem ali z konjem? Kaj pa ti s dežnikom? Včeraj sem šel k kovaču. Pojdi h okulistu!')
-    expect(checker.corrected).to eq 'This is a double space test. S konjem ali s konjem? Kaj pa ti z dežnikom? Včeraj sem šel h kovaču. Pojdi k okulistu!'
-    expect(checker.total_count).to eq 7
-    expect(checker.total_percent.round(2)).to eq 5.88
+  it 'corrects capitals after punctuation' do
+    checker = Checker.new('Kaj je to? nič.')
+    expect(checker.corrected).to eq 'Kaj je to? Nič.'
+    expect(checker.capitals_count).to eq 1
+    expect(checker.capitals_percent.round(2)).to eq 6.67
+  end
+
+  it 'corrects everything at once' do
+    checker = Checker.new('This is a  double  space  test. S konjem ali z konjem? Kaj pa ti s dežnikom? Včeraj sem šel k kovaču. Pojdi h okulistu! Kaj je to? nič.')
+    expect(checker.corrected).to eq 'This is a double space test. S konjem ali s konjem? Kaj pa ti z dežnikom? Včeraj sem šel h kovaču. Pojdi k okulistu! Kaj je to? Nič.'
+    expect(checker.total_count).to eq 8
+    expect(checker.total_percent.round(2)).to eq 5.93
   end
 end
