@@ -31,7 +31,7 @@
       %td= @checker.k_count
       = percentage_td @checker.k_percent
     %tr
-      %td Male začetnice za ločili ali na začetku odstavka
+      %td Male začetnice za ločili ali na začetku odstavka*
       %td= @checker.capitals_count
       = percentage_td @checker.capitals_percent
   %tfoot
@@ -39,6 +39,8 @@
       %td Skupaj napak
       %td= @checker.total_count
       = percentage_td @checker.total_percent
+
+%small * dela napake pri kraticah, ki se končajo s piko - npr., tj.,…
 
 %h2 Popravljen tekst
 %p= simple_format @checker.corrected
