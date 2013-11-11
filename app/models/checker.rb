@@ -23,12 +23,13 @@ class Checker
     end
   end
 
-  def correct_text
+  def correct_text &block
+    block = -> (c){ c } unless block
     corrected = @original
     { space: ' ', ellipsis: '…', z: 's', s: 'z', h: 'k', k: 'h' }.each do |key, value|
-      corrected = corrected.gsub(regexes[key], yield(value) )
+      corrected = corrected.gsub(regexes[key], block.call(value))
     end
-    corrected.gsub(regexes[:capitals]){ |s| yield(s.upcase) }
+    corrected.gsub(regexes[:capitals]){ |s| block.call(s.upcase) }
   end
 
   private
