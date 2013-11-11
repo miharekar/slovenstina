@@ -64,3 +64,6 @@ gem 'figaro'
 
 # Forms
 gem 'simple_form'
+
+# Coveralls
+gem 'coveralls', require: false
