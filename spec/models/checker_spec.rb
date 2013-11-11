@@ -15,11 +15,23 @@ describe Checker do
     expect(checker.z_percent.round(2)).to eq 4.55
   end
 
+  it 'corrects s placing in the beggining of paragraph' do
+    checker = Checker.new('Z tabo')
+    expect(checker.corrected).to eq 'S tabo'
+    expect(checker.z_count).to eq 1
+  end
+
   it 'corrects z placing' do
     checker = Checker.new('Kaj pa ti s dežnikom?')
     expect(checker.corrected).to eq 'Kaj pa ti z dežnikom?'
     expect(checker.s_count).to eq 1
     expect(checker.s_percent.round(2)).to eq 4.76
+  end
+
+  it 'corrects z placing in the beggining of paragraph' do
+    checker = Checker.new('S godbo.')
+    expect(checker.corrected).to eq 'Z godbo.'
+    expect(checker.s_count).to eq 1
   end
 
   it 'corrects k placing' do
@@ -29,11 +41,23 @@ describe Checker do
     expect(checker.k_percent.round(2)).to eq 4.17
   end
 
+  it 'corrects k placing in the beggining of paragraph' do
+    checker = Checker.new('K kovaču.')
+    expect(checker.corrected).to eq 'H kovaču.'
+    expect(checker.k_count).to eq 1
+  end
+
   it 'corrects h placing' do
     checker = Checker.new('Pojdi h okulistu!')
     expect(checker.corrected).to eq 'Pojdi k okulistu!'
     expect(checker.h_count).to eq 1
     expect(checker.h_percent.round(2)).to eq 5.88
+  end
+
+  it 'corrects h placing in the beggining of paragraph' do
+    checker = Checker.new('H okulistu!')
+    expect(checker.corrected).to eq 'K okulistu!'
+    expect(checker.h_count).to eq 1
   end
 
   it 'corrects capitals after punctuation' do

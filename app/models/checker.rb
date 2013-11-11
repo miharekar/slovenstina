@@ -3,10 +3,10 @@ class Checker
 
   CHECKS = [:space, :z, :s, :h, :k, :capitals]
   SPACE_REGEX = /  +/
-  Z_REGEX = /(?<=\s)z(?=\s[cčfhkpsšt])/i
-  S_REGEX = /(?<=\s)s(?=\s[^cčfhkpsšt])/i
-  K_REGEX = /(?<=\s)k(?=\s[kg])/i
-  H_REGEX = /(?<=\s)h(?=\s[^kg])/i
+  Z_REGEX = /(?<=\s)z(?=\s[cčfhkpsšt])|^z(?=\s[cčfhkpsšt])/i
+  S_REGEX = /(?<=\s)s(?=\s[^cčfhkpsšt])|^s(?=\s[^cčfhkpsšt])/i
+  K_REGEX = /(?<=\s)k(?=\s[kg])|^k(?=\s[kg])/i
+  H_REGEX = /(?<=\s)h(?=\s[^kg])|^h(?=\s[^kg])/i
   CAPITALS_REGEX = /(?<=[.?!] )([a-zčšž])|^([a-zčšž])/
 
   def initialize text
