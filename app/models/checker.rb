@@ -1,10 +1,8 @@
 class Checker
-  attr_reader :corrected, :original, :highlighted
+  attr_reader :corrected, :original
 
   def initialize text
     @original = text.strip
-    @corrected = correct_text
-    @highlighted = correct_text '<mark>', '</mark>'
   end
 
   def total_count
@@ -25,6 +23,14 @@ class Checker
     end
   end
 
+  def correct_text
+    corrected = @original
+    { space: ' ', ellipsis: '…', z: 's', s: 'z', h: 'k', k: 'h' }.each do |key, value|
+      corrected = corrected.gsub(regexes[key], yield(value) )
+    end
+    corrected.gsub(regexes[:capitals]){ |s| yield(s.upcase) }
+  end
+
   private
   def regexes
     {
@@ -36,13 +42,5 @@ class Checker
       h: /(?<=\s)h(?=\s[^kg])|^h(?=\s[^kg])/i,
       capitals: /(?<=[.?!] )([a-zčšž])|^([a-zčšž])/
     }
-  end
-
-  def correct_text before = '', after = ''
-    corrected = @original
-    { space: ' ', ellipsis: '…', z: 's', s: 'z', h: 'k', k: 'h' }.each do |key, value|
-      corrected = corrected.gsub(regexes[key], "#{before}#{value}#{after}")
-    end
-    corrected.gsub(regexes[:capitals]){ |s| "#{before}#{s.upcase}#{after}" }
   end
 end
