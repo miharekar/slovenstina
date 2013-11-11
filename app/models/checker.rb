@@ -2,6 +2,7 @@ class Checker
   attr_reader :corrected, :original, :highlighted
 
   CHECKS = [:space, :ellipsis, :z, :s, :h, :k, :capitals]
+  REPLACEMENTS = { space: ' ', ellipsis: '…', z: 's', s: 'z', h: 'k', k: 'h' }
   SPACE_REGEX = /  +/
   ELLIPSIS_REGEX = /\.{2,}/
   Z_REGEX = /(?<=\s)z(?=\s[cčfhkpsšt])|^z(?=\s[cčfhkpsšt])/i
@@ -12,8 +13,8 @@ class Checker
 
   def initialize text
     @original = text.strip
-    correct_text
-    highlight_text
+    @corrected = correct_text
+    @highlighted = correct_text '<mark>', '</mark>'
   end
 
   def total_count
@@ -26,8 +27,7 @@ class Checker
 
   CHECKS.each do |check|
     define_method "#{check}_count" do
-      regex = self.class.const_get("#{check.upcase}_REGEX")
-      @original.scan(regex).size
+      @original.scan(regex_from_symbol(check)).size
     end
 
     define_method "#{check}_percent" do
@@ -36,26 +36,15 @@ class Checker
   end
 
   private
-  def correct_text
-    @corrected = @original
-      .gsub(SPACE_REGEX, ' ')
-      .gsub(ELLIPSIS_REGEX, '…')
-      .gsub(Z_REGEX, 's')
-      .gsub(S_REGEX, 'z')
-      .gsub(H_REGEX, 'k')
-      .gsub(K_REGEX, 'h')
-      .gsub(CAPITALS_REGEX){ |s| s.upcase }
+  def regex_from_symbol symbol
+    self.class.const_get("#{symbol.upcase}_REGEX")
   end
 
-  def highlight_text
-    @highlighted = @original
-      .gsub(SPACE_REGEX, '<mark> </mark>')
-      .gsub(ELLIPSIS_REGEX, '<mark>…</mark>')
-      .gsub(Z_REGEX, '<mark>s</mark>')
-      .gsub(S_REGEX, '<mark>z</mark>')
-      .gsub(H_REGEX, '<mark>k</mark>')
-      .gsub(K_REGEX, '<mark>h</mark>')
-      .gsub(CAPITALS_REGEX){ |s| "<mark>#{s.upcase}</mark>" }
-      .gsub(/(?:\n\r?|\r\n?)/, '<br>')
+  def correct_text before = '', after = ''
+    corrected = @original
+    REPLACEMENTS.each do |key, value|
+      corrected = corrected.gsub(regex_from_symbol(key), "#{before}#{value}#{after}")
+    end
+    corrected.gsub(CAPITALS_REGEX){ |s| "#{before}#{s.upcase}#{after}" }
   end
 end
