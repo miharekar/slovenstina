@@ -3,6 +3,6 @@ class CheckerController < ApplicationController
   end
 
   def create
-    @checker = Checker.new(params[:checkin][:text])
+    @checker = Checker.new(params[:checker][:text])
   end
 end
