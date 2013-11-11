@@ -1,8 +1,6 @@
 class Checker
   attr_reader :corrected, :original, :highlighted
 
-  CHECKS = [:space, :ellipsis, :z, :s, :h, :k, :capitals]
-
   def initialize text
     @original = text.strip
     @corrected = correct_text
@@ -10,14 +8,14 @@ class Checker
   end
 
   def total_count
-    CHECKS.map{ |c| send("#{c}_count") }.sum
+    regexes.map{ |k, v| send("#{k}_count") }.sum
   end
 
   def total_percent
     total_count.to_f / original.size.to_f * 100
   end
 
-  CHECKS.each do |check|
+  [:space, :ellipsis, :z, :s, :h, :k, :capitals].each do |check|
     define_method "#{check}_count" do
       @original.scan(regexes[check]).size
     end
