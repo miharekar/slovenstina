@@ -13,6 +13,7 @@ class Checker
   def initialize text
     @original = text.strip
     correct_text
+    highlight_text
   end
 
   def total_count
@@ -44,7 +45,9 @@ class Checker
       .gsub(H_REGEX, 'k')
       .gsub(K_REGEX, 'h')
       .gsub(CAPITALS_REGEX){ |s| s.upcase }
+  end
 
+  def highlight_text
     @highlighted = @original
       .gsub(SPACE_REGEX, '<mark> </mark>')
       .gsub(ELLIPSIS_REGEX, '<mark>…</mark>')
