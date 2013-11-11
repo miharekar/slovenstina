@@ -13,10 +13,17 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    = render 'layouts/navigation'
-    = yield(:before_container)
-    .container{ class: yield(:container_class) }
-      .row
-        .col-md-12
-          = render 'layouts/flash'
-          = yield
+    #wrap
+      %a{href: 'https://github.com/mrfoto/slovenstina'}
+        %img{alt: 'Fork me on GitHub', src: 'https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png', class: 'fork-me' }
+      = render 'layouts/navigation'
+      .container{ class: yield(:container_class) }
+        .row
+          .col-md-12
+            = render 'layouts/flash'
+            = yield
+    #footer
+      .container
+        %p.text-muted.credit
+          &copy;
+          %a{ href: 'http://mr.si' } Miha Rekar
