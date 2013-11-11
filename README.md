@@ -1,9 +1,9 @@
 #Slovenština
 
-[![Dependencies](http://allthebadges.io/mrfoto/slovenstina/gemnasium.png)](http://allthebadges.io/mrfoto/slovenstina/gemnasium)
-[![Build Status](http://allthebadges.io/mrfoto/slovenstina/travis.png)](http://allthebadges.io/mrfoto/slovenstina/travis)
-[![Coverage](http://allthebadges.io/mrfoto/slovenstina/coveralls.png)](http://allthebadges.io/mrfoto/slovenstina/coveralls)
-[![Code Climate](http://allthebadges.io/mrfoto/slovenstina/code_climate.png)](http://allthebadges.io/mrfoto/slovenstina/code_climate)
+[![Dependency Status](https://gemnasium.com/mrfoto/slovenstina.png)](https://gemnasium.com/mrfoto/slovenstina)
+[![Build Status](https://travis-ci.org/mrfoto/slovenstina.png)](https://travis-ci.org/mrfoto/slovenstina)
+[![Coverage Status](https://coveralls.io/repos/mrfoto/slovenstina/badge.png)](https://coveralls.io/r/mrfoto/slovenstina)
+[![Code Climate](https://codeclimate.com/github/mrfoto/slovenstina.png)](https://codeclimate.com/github/mrfoto/slovenstina)
 
 Enostavna spletna aplikacija za preverjanje in popravljanje osnovnih napak v tekstu.
 
