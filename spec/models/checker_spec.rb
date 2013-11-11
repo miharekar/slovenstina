@@ -8,6 +8,12 @@ describe Checker do
     expect(checker.space_percent.round(2)).to eq 9.68
   end
 
+  it 'checks ellipsis' do
+    checker = Checker.new('banane, jabolke,... Ali pa ..')
+    expect(checker.corrected).to eq 'Banane, jabolke,… Ali pa …'
+    expect(checker.ellipsis_count).to eq 2
+  end
+
   it 'corrects s placing' do
     checker = Checker.new('S konjem ali z konjem?')
     expect(checker.corrected).to eq 'S konjem ali s konjem?'
@@ -75,9 +81,8 @@ describe Checker do
   end
 
   it 'corrects everything at once' do
-    checker = Checker.new('this is a  double  space  test! s konjem ali z konjem? Kaj pa ti s dežnikom? včeraj sem šel k kovaču. pojdi h okulistu!')
-    expect(checker.corrected).to eq 'This is a double space test! S konjem ali s konjem? Kaj pa ti z dežnikom? Včeraj sem šel h kovaču. Pojdi k okulistu!'
-    expect(checker.total_count).to eq 11
-    expect(checker.total_percent.round(2)).to eq 9.24
+    checker = Checker.new('this is a  double  space  test, z test,... s konjem ali z konjem? Kaj pa ti s dežnikom? včeraj sem šel k kovaču. pojdi h okulistu!')
+    expect(checker.corrected).to eq 'This is a double space test, s test,… s konjem ali s konjem? Kaj pa ti z dežnikom? Včeraj sem šel h kovaču. Pojdi k okulistu!'
+    expect(checker.total_count).to eq 13
   end
 end

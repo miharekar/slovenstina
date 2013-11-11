@@ -4,9 +4,10 @@ Enostavna spletna aplikacija za preverjanje in popravljanje osnovnih napak v tek
 
 Zaenkrat preverja:
 - dvojne (trojne, četverne,…) presledke
+- pike namesto tripičja
 - s/z predpone
 - h/k predpone
 - male začetnice za ločili in na začetku odstavka\*
 
 
-\* dela napake pri kraticah, ki se končajo s piko - npr., tj.,…
+\* dela napake pri datumih napisanih z besedo, ter kraticah, ki se končajo s piko - npr., tj.,…

@@ -1,8 +1,9 @@
 class Checker
   attr_reader :corrected, :original
 
-  CHECKS = [:space, :z, :s, :h, :k, :capitals]
+  CHECKS = [:space, :ellipsis, :z, :s, :h, :k, :capitals]
   SPACE_REGEX = /  +/
+  ELLIPSIS_REGEX = /\.{2,}/
   Z_REGEX = /(?<=\s)z(?=\s[cčfhkpsšt])|^z(?=\s[cčfhkpsšt])/i
   S_REGEX = /(?<=\s)s(?=\s[^cčfhkpsšt])|^s(?=\s[^cčfhkpsšt])/i
   K_REGEX = /(?<=\s)k(?=\s[kg])|^k(?=\s[kg])/i
@@ -35,11 +36,13 @@ class Checker
 
   private
   def correct_text
-    @corrected = @original.gsub(SPACE_REGEX, ' ')
-    .gsub(Z_REGEX, 's')
-    .gsub(S_REGEX, 'z')
-    .gsub(H_REGEX, 'k')
-    .gsub(K_REGEX, 'h')
-    .gsub(CAPITALS_REGEX){ |s| s.upcase }
+    @corrected = @original
+      .gsub(SPACE_REGEX, ' ')
+      .gsub(ELLIPSIS_REGEX, '…')
+      .gsub(Z_REGEX, 's')
+      .gsub(S_REGEX, 'z')
+      .gsub(H_REGEX, 'k')
+      .gsub(K_REGEX, 'h')
+      .gsub(CAPITALS_REGEX){ |s| s.upcase }
   end
 end

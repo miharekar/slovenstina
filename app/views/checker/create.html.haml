@@ -15,6 +15,10 @@
       %td= @checker.space_count
       = percentage_td @checker.space_percent
     %tr
+      %td Pike namesto tripičja
+      %td= @checker.ellipsis_count
+      = percentage_td @checker.ellipsis_percent
+    %tr
       %td Nepravilni “s”
       %td= @checker.s_count
       = percentage_td @checker.s_percent
@@ -36,11 +40,11 @@
       = percentage_td @checker.capitals_percent
   %tfoot
     %tr
-      %td Skupaj napak
+      %td Skupaj
       %td= @checker.total_count
       = percentage_td @checker.total_percent
 
-%small * dela napake pri kraticah, ki se končajo s piko - npr., tj.,…
+%small * dela napake pri datumih napisanih z besedo, ter kraticah, ki se končajo s piko - npr., tj.,…
 
 %h2 Popravljen tekst
 %p= simple_format @checker.corrected
