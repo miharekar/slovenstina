@@ -84,5 +84,11 @@ describe Checker do
     checker = Checker.new('this is a  double  space  test, z test,... s konjem ali z konjem? Kaj pa ti s dežnikom? včeraj sem šel k kovaču. pojdi h okulistu!')
     expect(checker.corrected).to eq 'This is a double space test, s test,… s konjem ali s konjem? Kaj pa ti z dežnikom? Včeraj sem šel h kovaču. Pojdi k okulistu!'
     expect(checker.total_count).to eq 13
+    expect(checker.total_percent).to eq 10.0
+  end
+
+  it 'marks mistakes' do
+    checker = Checker.new('dafak?')
+    expect(checker.highlighted).to eq '<mark>D</mark>afak?'
   end
 end

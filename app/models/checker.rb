@@ -1,5 +1,5 @@
 class Checker
-  attr_reader :corrected, :original
+  attr_reader :corrected, :original, :highlighted
 
   CHECKS = [:space, :ellipsis, :z, :s, :h, :k, :capitals]
   SPACE_REGEX = /  +/
@@ -44,5 +44,15 @@ class Checker
       .gsub(H_REGEX, 'k')
       .gsub(K_REGEX, 'h')
       .gsub(CAPITALS_REGEX){ |s| s.upcase }
+
+    @highlighted = @original
+      .gsub(SPACE_REGEX, '<mark> </mark>')
+      .gsub(ELLIPSIS_REGEX, '<mark>…</mark>')
+      .gsub(Z_REGEX, '<mark>s</mark>')
+      .gsub(S_REGEX, '<mark>z</mark>')
+      .gsub(H_REGEX, '<mark>k</mark>')
+      .gsub(K_REGEX, '<mark>h</mark>')
+      .gsub(CAPITALS_REGEX){ |s| "<mark>#{s.upcase}</mark>" }
+      .gsub(/(?:\n\r?|\r\n?)/, '<br>')
   end
 end
