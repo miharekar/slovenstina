@@ -67,8 +67,8 @@ describe Checker do
   end
 
   it 'corrects capitals after punctuation' do
-    checker = Checker.new('Kaj je to? nič.')
-    expect(checker.correct_text).to eq 'Kaj je to? Nič.'
+    checker = Checker.new('Kaj je to? čin.')
+    expect(checker.correct_text).to eq 'Kaj je to? Čin.'
     expect(checker.capitals_count).to eq 1
     expect(checker.capitals_percent.round(2)).to eq 6.67
   end

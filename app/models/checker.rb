@@ -28,7 +28,7 @@ class Checker
     { space: ' ', ellipsis: '…', z: 's', s: 'z', h: 'k', k: 'h' }.each do |key, value|
       corrected = corrected.gsub(regexes[key], block_given? ? yield(value) : value )
     end
-    corrected.gsub(regexes[:capitals]){ |s| block_given? ? yield(s.upcase) : s.upcase }
+    corrected.gsub(regexes[:capitals]){ |s| block_given? ? yield(utf8_upcase(s)) : utf8_upcase(s) }
   end
 
   private
@@ -40,7 +40,11 @@ class Checker
       s: /(?<=\s)s(?=\s[^cčfhkpsšt])|^s(?=\s[^cčfhkpsšt])/i,
       k: /(?<=\s)k(?=\s[kg])|^k(?=\s[kg])/i,
       h: /(?<=\s)h(?=\s[^kg])|^h(?=\s[^kg])/i,
-      capitals: /(?<=[.?!] )([a-zčšž])|^([a-zčšž])/
+      capitals: /(?<=[.?!] )([[:lower:]])|^([[:lower:]])/
     }
+  end
+
+  def utf8_upcase text
+    text.mb_chars.upcase.to_s
   end
 end
