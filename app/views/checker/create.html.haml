@@ -46,4 +46,4 @@
 %small * dela napake pri datumih napisanih z besedo, ter kraticah, ki se končajo s piko - npr., tj.,…
 
 %h2 Popravljen tekst
-%p= raw @checker.correct_text{ |c| content_tag(:mark, c) }
+= simple_format(@checker.correct_text{ |c| content_tag(:mark, c) }, {}, sanitize: false)
