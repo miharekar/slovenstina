@@ -5,10 +5,10 @@
     %meta{ content: "width=device-width, initial-scale=1.0", name: "viewport" }
     %meta{ content: "Miha Rekar", name: "author" }
     %title= content_for?(:title) ? yield(:title) : "Slovenština"
-    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "//code.jquery.com/jquery-2.0.3.min.js"
-    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"
+    = javascript_include_tag "//code.jquery.com/jquery-2.1.0.min.js"
+    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
