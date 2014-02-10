@@ -15,8 +15,9 @@
 /log/*.log
 /tmp
 
-# Ignore application configuration
-/config/application.yml
+# Ignore metrics
+/sandi_meter
+/coverage
 
 # Ignore metrics
 /sandi_meter
@@ -26,5 +27,8 @@
 *.swp
 *~
 .DS_Store
+
+# Ignore application configuration
+/config/application.yml
+.powrc
 .powenv
-.rspec

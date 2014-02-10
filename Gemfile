@@ -23,32 +23,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 
-group :production do
-  gem 'unicorn'
-  gem 'rails_12factor'
-end
-
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'bullet'
-  gem 'quiet_assets'
-  gem 'sandi_meter'
-end
-
-group :development, :test do
-  gem 'jazz_hands'
-  gem 'rspec-rails'
-  gem 'shoulda'
-  gem 'factory_girl_rails'
-  gem 'guard-rspec'
-  gem 'terminal-notifier-guard'
-end
-
-group :test do
-  gem 'simplecov'
-end
-
+# Newrelic /newrelic
 gem 'newrelic_rpm'
 
 # HAML
@@ -61,5 +36,38 @@ gem 'figaro'
 # Forms
 gem 'simple_form'
 
-# Coveralls
-gem 'coveralls', require: false
+group :production do
+  gem 'unicorn'
+  gem 'rails_12factor'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet'
+  gem 'quiet_assets'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
+  # code coverage
+  gem 'simplecov'
+  gem 'coveralls'
+end
+
+group :development, :test do
+  # App preloading
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  # Pry stuff
+  gem 'pry'
+  gem 'pry-coolline'
+  gem 'pry-stack_explorer'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'awesome_print'
+  gem 'hirb'
+end
