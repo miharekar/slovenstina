@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.0.4'
+gem 'rails', '~> 4.1.2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -53,9 +53,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'terminal-notifier-guard'
-  # code coverage
-  gem 'simplecov'
-  gem 'coveralls'
 end
 
 group :development, :test do
