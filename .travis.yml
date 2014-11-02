@@ -1,7 +1,8 @@
 language: ruby
 rvm:
-  - 2.1.2
+  - 2.1.3
 env:
   global:
     # sample secret token so that travis works
     - SECRET_TOKEN=dea8476377b68a7e2d3a21880fafbb11ab554b7a8f6a4f37a0068e643dbe2a936fa0c6efb757dad9541472ec99ef07eae7a131485e7a5a6f80388e1c7b30ef0d
+    - CODECLIMATE_REPO_TOKEN=0a6302c6da0c0dace0246e4ae9ad97cb47d79a08f99054d630ab077be619bd77

@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.1.2'
+gem 'rails', '~> 4.1.7'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -49,6 +49,7 @@ group :development do
 end
 
 group :test do
+  gem 'codeclimate-test-reporter'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
